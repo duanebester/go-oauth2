@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  authorization-db:
+    image: postgres:14-alpine
+    container_name: authorization-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=authorization
+  authorization-cache:
+    image: redis:latest
+    container_name: authorization-cache
+    restart: always
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=redis
+

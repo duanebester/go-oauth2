@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<body>
+    <h1>My Cool App</h1>
+    <hr/>
+    <main>
+        <h2>Dashboard</h2>
+        <section>
+            {{if .data.profile}}
+            <h1>Hello {{.data.profile.first_name}}!</h1>
+            {{else}}
+            <h1>Hello {{.data.email}}!</h1>
+            {{end}}
+            {{if .data.posts}}
+            <p>Here are your posts:</p>
+            {{range $post := .data.posts}}
+            <article>
+                <h2>{{$post.title}}</h2>
+                <p>{{$post.body}}</p>
+            </article>
+            {{end}}
+            {{else}}
+            <p>No posts.</p>
+            {{end}}
+        </section>
+    </main>
+</body>
+
+</html>
